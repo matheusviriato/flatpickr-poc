@@ -1,18 +1,19 @@
-import flatpickr from 'flatpickr';
-import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-import 'flatpickr/dist/flatpickr.css';
-import { useEffect, useRef } from 'react';
-import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+/* eslint-disable react-hooks/exhaustive-deps */
+import flatpickr from "flatpickr";
+import weekSelect from "flatpickr/dist/plugins/weekSelect/weekSelect";
+import "flatpickr/dist/flatpickr.css";
+import { useEffect, useRef } from "react";
+import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 
 const hooks = [
-  'onChange',
-  'onOpen',
-  'onClose',
-  'onMonthChange',
-  'onYearChange',
-  'onReady',
-  'onValueUpdate',
-  'onDayCreate',
+  "onChange",
+  "onOpen",
+  "onClose",
+  "onMonthChange",
+  "onYearChange",
+  "onReady",
+  "onValueUpdate",
+  "onDayCreate",
 ];
 
 const Datepicker = (props) => {
@@ -31,7 +32,9 @@ const Datepicker = (props) => {
         function () {
           // extract the week number
           // note: "this" is bound to the flatpickr instance
-          const weekNumber = this.selectedDates[0] ? this.config.getWeek(this.selectedDates[0]) : null;
+          const weekNumber = this.selectedDates[0]
+            ? this.config.getWeek(this.selectedDates[0])
+            : null;
           props.onChange({
             weekNumber,
             weekStartDay: this.weekStartDay,
@@ -48,12 +51,12 @@ const Datepicker = (props) => {
 
   useEffect(() => {
     hooks.forEach((hook) => {
-      if (props[hook] && hook !== 'onChange') {
+      if (props[hook] && hook !== "onChange") {
         instanceRef.current.set(hook, [props[hook]]);
       }
     });
 
-    if (props.hasOwnProperty('value')) {
+    if (props.hasOwnProperty("value")) {
       instanceRef.current.setDate(props.value, false);
     }
 

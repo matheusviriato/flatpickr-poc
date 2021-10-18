@@ -1,17 +1,18 @@
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.css';
-import { useEffect, useRef } from 'react';
-import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+/* eslint-disable react-hooks/exhaustive-deps */
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.css";
+import { useEffect, useRef } from "react";
+import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 
 const hooks = [
-  'onChange',
-  'onOpen',
-  'onClose',
-  'onMonthChange',
-  'onYearChange',
-  'onReady',
-  'onValueUpdate',
-  'onDayCreate',
+  "onChange",
+  "onOpen",
+  "onClose",
+  "onMonthChange",
+  "onYearChange",
+  "onReady",
+  "onValueUpdate",
+  "onDayCreate",
 ];
 
 const Datepicker = (props) => {
@@ -39,7 +40,7 @@ const Datepicker = (props) => {
       }
     });
 
-    if (props.hasOwnProperty('value')) {
+    if (props.hasOwnProperty("value")) {
       instanceRef.current.setDate(props.value, false);
     }
   });
