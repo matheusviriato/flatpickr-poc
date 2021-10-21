@@ -1,53 +1,46 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.css";
-import { useEffect, useRef } from "react";
-import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import flatpickr, { locale, events } from '../flatpickr';
 
-const hooks = [
-  "onChange",
-  "onOpen",
-  "onClose",
-  "onMonthChange",
-  "onYearChange",
-  "onReady",
-  "onValueUpdate",
-  "onDayCreate",
-];
-
-const Datepicker = (props) => {
+const Datepicker = ({ value, options, onChange, ...rest }) => {
   const elementRef = useRef(null);
-  const instanceRef = useRef(null);
 
-  const mountFlatpickerInstance = () => {
-    flatpickr.localize(Portuguese);
-    instanceRef.current = flatpickr(elementRef.current, {
-      locale: {
-        firstDayOfWeek: 0,
-      },
-      ...props.options,
+  const createInstance = () => {
+    const instance = flatpickr(elementRef.current, {
+      locale,
+      ...options,
     });
+
+    instance.set('onChange', [onChange]);
+
+    events.forEach((event) => {
+      if (rest[event]) instance.set(event, [rest[event]]);
+    });
+
+    if (value) instance.setDate(value, false);
   };
 
   useEffect(() => {
-    mountFlatpickerInstance();
-  }, []);
-
-  useEffect(() => {
-    hooks.forEach((hook) => {
-      if (props[hook]) {
-        instanceRef.current.set(hook, [props[hook]]);
-      }
-    });
-
-    if (props.hasOwnProperty("value")) {
-      instanceRef.current.setDate(props.value, false);
+    if (elementRef) {
+      createInstance();
     }
-  });
+  }, [elementRef]);
 
-  const isInline = props?.options?.inline ?? false;
+  const isInline = options?.inline ?? false;
 
   return isInline ? <div ref={elementRef} /> : <input ref={elementRef} />;
+};
+
+Datepicker.propTypes = {
+  options: PropTypes.object,
+  value: PropTypes.instanceOf(Date),
+  onChange: PropTypes.func.isRequired,
+};
+
+Datepicker.defaultProps = {
+  options: {},
+  value: undefined,
 };
 
 export default Datepicker;

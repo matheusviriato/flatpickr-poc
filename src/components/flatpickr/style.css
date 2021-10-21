@@ -1,0 +1,116 @@
+/* month and year header */
+
+.flatpickr-current-month span.cur-month {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.flatpickr-current-month input.cur-year {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* arrows header */
+.flatpickr-months .flatpickr-prev-month:hover svg, .flatpickr-months .flatpickr-next-month:hover svg {
+  fill: #FFCC00;
+}
+
+/* weekdays */
+
+.flatpickr-weekdays  {
+  margin-top: 28px;
+}
+
+span.flatpickr-weekday {
+  font-size: 12px;
+  color: #737373;
+  font-weight: normal;
+}
+
+/* calendar body days */
+
+.flatpickr-days {
+  font-size: 14px;
+  color: #333333;
+}
+
+.dayContainer {
+  background: #F7F7F7;
+}
+
+.dayContainer .flatpickr-day {
+  color: #333333;
+}
+
+.dayContainer .flatpickr-day.prevMonthDay{
+  color: rgba(57,57,57,0.3);
+}
+
+.dayContainer .flatpickr-day.nextMonthDay{
+  color: rgba(57,57,57,0.3);
+}
+
+.dayContainer .flatpickr-day.selected {
+  color: #333333;
+  background-color: #FFCC00;
+  border-color: #FFCC00;
+}
+
+.dayContainer .flatpickr-day.selected:hover {
+  background-color: #FFCC00;
+  border-color: #FFCC00;
+  color: #333333;
+}
+
+.dayContainer .flatpickr-day.today {
+  border-color: #FFCC00;
+}
+
+.dayContainer .flatpickr-day.today:hover {
+  border-color: #FFCC00;
+  background-color: #e6e6e6;
+  color: #333333;
+}
+
+.dayContainer .flatpickr-day.today.selected {
+  background-color: #FFCC00;
+}
+
+
+/* picker range */
+
+.dayContainer .flatpickr-day.startRange.startRange {
+  background-color: #FFCC00;
+  border-color: #FFCC00;
+}
+
+.dayContainer .flatpickr-day.startRange.startRange:hover {
+  color: #333333;
+}
+
+.dayContainer .flatpickr-day.endRange.endRange {
+  background-color: #FFCC00;
+  border-color: #FFCC00;
+}
+
+.dayContainer .flatpickr-day.endRange.endRange:hover {
+  color: #333333;
+}
+
+.dayContainer .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
+  box-shadow: -10px 0 0 #FFCC00;
+}
+
+/* week selector */
+.flatpickr-weekwrapper .flatpickr-weekday {
+  margin-top: 28px;
+  font-size: 12px;
+  color: #737373;
+  font-weight: normal;
+}
+
+.flatpickr-day.week.selected {
+  box-shadow: -10px 0 0 #FFCC00;
+}
