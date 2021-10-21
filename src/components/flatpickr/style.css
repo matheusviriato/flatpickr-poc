@@ -34,6 +34,7 @@ span.flatpickr-weekday {
 .flatpickr-days {
   font-size: 14px;
   color: #333333;
+  padding-bottom: 28px;
 }
 
 .dayContainer {
